@@ -15,7 +15,6 @@ sudo apt install -y zsh \
                     curl \
                     gnome-shell-extension-manager \
                     gnome-tweaks \
-                    xbindkeys xautomation \
                     alacritty
 
 # move config files into the .config folder
@@ -35,7 +34,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 rm -f $HOME/.zshrc
 ln -s $DOTFILES/zsh/.zshrc $HOME/.zshrc
 
-source
+source $HOME/.zshrc
 
 # add autosuggestions plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -44,4 +43,18 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ln -s $DOTFILES/zsh/oxide.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/
 
 # add binding for my MX Master mouse
+sudo apt install -y build-essential cmake pkg-config libevdev-dev libudev-dev libconfig++-dev libglib2.0-dev
+
+# clone the logiops repo
+git clone https://github.com/PixlOne/logiops.git
+
+# build and install it
+cd logiops && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make && sudo make install
+
+# put the config in the right place
+sudo ln -s $DOTFILES/logid.cfg /etc/logid.cfg
+
+# enable the service / start it right now
+sudo systemctl enable --now logid
+
 ln -s $DOTFILES/.xbindkeysrc $HOME/.xbindkeysrc
