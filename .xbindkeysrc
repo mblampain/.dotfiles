@@ -1,0 +1,15 @@
+###########################
+# xbindkeys configuration #
+###########################
+
+# Workspace Up
+"xte 'keydown Control_L' 'keydown Super_L' 'key Prior' 'keyup Super_L' 'keyup Control_L'"
+  b:9
+
+# Workspace Down
+"xte 'keydown Control_L' 'keydown Super_L' 'key Next' 'keyup Super_L' 'keyup Control_L'"
+  b:8
+
+##################################
+# End of xbindkeys configuration #
+##################################
