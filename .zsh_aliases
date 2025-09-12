@@ -1,0 +1,10 @@
+# Commands
+alias q='exit'
+alias c='clear'
+alias rm='rm -rf'
+
+# Folders
+alias ~='cd ~/'
+alias dot='cd $DOTFILES'
+alias doc='cd ~/Documents'
+alias dwn='cd ~/Downloads'
